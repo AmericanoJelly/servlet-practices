@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="/helloweb/join" method="post">
+	<form action="/helloweb/join.jsp" method="post">
 		
 		이메일<input type="text" name="email"/>	
 		<br><br>
