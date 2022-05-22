@@ -30,7 +30,7 @@
 		여자<input type="radio" name="gender" value="fmale"/>
 		<br><br>
 		
-		술 : 
+		술: 
 		막걸리 <input type = "checkbox" name="drink" value="mak"/>
 		소주 <input type = "checkbox" name="drink" value="soju"/>
 		맥주 <input type = "checkbox" name="drink" value="makju"/>
