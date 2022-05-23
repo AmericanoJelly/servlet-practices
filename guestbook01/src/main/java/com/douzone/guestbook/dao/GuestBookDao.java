@@ -17,7 +17,7 @@ public class GuestBookDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-connection = getConnection();
+			connection = getConnection();
 			
 			String sql =
 				" insert" +
@@ -58,20 +58,15 @@ connection = getConnection();
 		
 		try {
 			connection = getConnection();
-			
-			//3. SQL 준비
+		
 			String sql =
 				  "   select no, name, password, message, date_format(reg_date, '%Y-%m-%d %H:%i') "
 				+ "   from guestbook "
 				+ " order by no desc";
 			pstmt = connection.prepareStatement(sql);
 			
-			//4. Parameter Mapping
-			
-			//5. SQL 실행
 			rs = pstmt.executeQuery();
 			
-			//6. 결과처리
 			while(rs.next()) {
 				Long no = rs.getLong(1);
 				String name = rs.getString(2);
@@ -107,6 +102,40 @@ connection = getConnection();
 		}
 		
 		return result;		
+	}
+	
+	public boolean delete(GuestBookVo vo) {
+		boolean result = false;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			connection = getConnection();
+
+			String sql = "delete from guestbook where no = ? and password = ?";
+			pstmt = connection.prepareStatement(sql);
+
+			pstmt.setLong(1, vo.getNo());
+			pstmt.setString(2, vo.getPassword());
+
+			int count = pstmt.executeUpdate();
+			result = count == 1;
+
+		} catch (SQLException e) {
+			System.out.println("드라이버 로딩 실패:" + e);
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 	
 	private Connection getConnection() throws SQLException {

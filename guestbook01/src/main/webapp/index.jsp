@@ -28,21 +28,23 @@
 	<br>
 
 	<%
-		for(GuestBookvo vo:list) {
+		int count = 1;
+		for(GuestBookVo vo:list) {
 	%>
 	<table width=510 border=1>
 		<tr>
-			<td><%=vo.getNo() %></td>
+			<td><%= count%></td>
 			<td><%=vo.getName() %></td>
 			<td><%=vo.getReg_date() %></td>
-			<td><a href="deleteform.jsp?no=10">삭제</a></td>
+			<td><a href="deleteform.jsp?no=<%=vo.getNo()%>">삭제</a></td>
 		</tr>
 		<tr>
-			<td><%=vo.getMessage() %></td>
+			<td colspan=4><%=vo.getMessage() %></td>
 		</tr>
 	</table>
 	<br>
 	<%
+		count++;
 		}
 	%>	
 	

@@ -4,17 +4,19 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	String name = request.getParameter("name");
+	Long no = Long.parseLong(request.getParameter("no"));
 	String password = request.getParameter("password");
-	String message = request.getParameter("message");
 	
 	GuestBookVo vo = new GuestBookVo();
-
-	vo.setName(name);
-	vo.setPassword(password);
-	vo.setMessage(message);
-
-	new GuestBookDao().insert(vo);
 	
-	response.sendRedirect("/guestbook01");
+	vo.setNo(no);
+	vo.setPassword(password);
+	
+	
+	if (new GuestBookDao().delete(vo)) {
+		response.sendRedirect("/guestbook01");
+	} else {
+		response.sendRedirect("deleteform.jsp?no=" + no + "&check=false");
+	}
+
 %>
