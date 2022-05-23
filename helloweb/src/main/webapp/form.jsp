@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="/helloweb/join.jsp" method="post">
+	<form action="/helloweb/join.jsp" method="post"> <!-- get방식은 길이가 제한되어있다, 링크 --> <!-- post: 보안, 길이제한 없음, 파일 --> 
 		
 		이메일<input type="text" name="email"/>	
 		<br><br>
