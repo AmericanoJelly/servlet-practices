@@ -14,10 +14,10 @@ public class GuestBookDaoTest {
 	
 	private static void testInsert() {
 		GuestBookVo vo = new GuestBookVo();
-		vo.setName("마dfdf");
+		vo.setName("dddd");
 		vo.setPassword("001101");
-		vo.setText("where is my koreankey");
-		vo.setReg_date("2022/05/23");
+		vo.setMessage("hihi");
+		//vo.setReg_date("%Y-%m-%d %H:%i");
 		
 		new GuestBookDao().insert(vo);
 	}

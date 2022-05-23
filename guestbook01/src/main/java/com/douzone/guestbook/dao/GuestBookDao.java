@@ -22,13 +22,13 @@ connection = getConnection();
 			String sql =
 				" insert" +
 				"   into guestbook" +
-				" values (null, ?, ?, ?,?)";
+				" values (null, ?, ?, ?,now())";
 			pstmt = connection.prepareStatement(sql);
 			
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getPassword());
-			pstmt.setString(3, vo.getText());
-			pstmt.setString(4, vo.getReg_date());
+			pstmt.setString(3, vo.getMessage());
+			//pstmt.setString(4, vo.getReg_date());
 			
 			int count = pstmt.executeUpdate();
 			result = count == 1;
@@ -51,7 +51,7 @@ connection = getConnection();
 	}
 	
 	public List<GuestBookVo> findAll() {
-		List<GuestBookVo> result = new ArrayList<>();
+		List<GuestBookVo> result = new ArrayList<GuestBookVo>();
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -61,7 +61,7 @@ connection = getConnection();
 			
 			//3. SQL 준비
 			String sql =
-				  "   select * "
+				  "   select no, name, password, message, date_format(reg_date, '%Y-%m-%d %H:%i') "
 				+ "   from guestbook "
 				+ " order by no desc";
 			pstmt = connection.prepareStatement(sql);
@@ -76,14 +76,14 @@ connection = getConnection();
 				Long no = rs.getLong(1);
 				String name = rs.getString(2);
 				String password = rs.getString(3);
-				String text = rs.getString(4);
+				String message = rs.getString(4);
 				String reg_date = rs.getString(5);
 				
 				GuestBookVo vo = new GuestBookVo();
 				vo.setNo(no);
 				vo.setName(name);
 				vo.setPassword(password);
-				vo.setText(text);
+				vo.setMessage(message);
 				vo.setReg_date(reg_date);
 				
 				result.add(vo);
