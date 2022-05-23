@@ -28,7 +28,7 @@
 	<br>
 
 	<%
-		int count = 1;
+		int count = list.size();
 		for(GuestBookVo vo:list) {
 	%>
 	<table width=510 border=1>
@@ -44,7 +44,7 @@
 	</table>
 	<br>
 	<%
-		count++;
+		count=count-1;
 		}
 	%>	
 	
