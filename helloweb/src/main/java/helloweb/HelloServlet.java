@@ -16,7 +16,7 @@ public class HelloServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter pw = response.getWriter();
-		pw.println("<h1>왔냐!! "+name+"</h1>");
+		pw.println("<h1>안녕"+name+"</h1>");
 	
 	}
 
