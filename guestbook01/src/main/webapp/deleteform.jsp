@@ -19,9 +19,7 @@
 			<td><a href="/guestbook01">메인으로 돌아가기</a></td>
 		</tr>
 	</table>
+	
 	</form>
-	<% if (!check) {%>
-	<h6>비밀번호가 일치하지 않습니다.</h6>
-	<% } %>
 </body>
 </html>
