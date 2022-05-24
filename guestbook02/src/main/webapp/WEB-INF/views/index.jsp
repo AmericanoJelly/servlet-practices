@@ -36,7 +36,7 @@
 			<td><%= count%></td>
 			<td><%=vo.getName() %></td>
 			<td><%=vo.getReg_date() %></td>
-			<td><a href="<%=request.getContextPath() %>/gb?a=deleteform">삭제</a></td>
+			<td><a href="<%=request.getContextPath() %>/gb?a=deleteform&no=<%=vo.getNo()%>">삭제</a></td>
 		</tr>
 		<tr>
 			<td colspan=4><%=vo.getMessage().replaceAll("\n", "<br/>") %></td>
