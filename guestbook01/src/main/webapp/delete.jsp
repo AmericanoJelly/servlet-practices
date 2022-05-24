@@ -3,20 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-
-	Long no = Long.parseLong(request.getParameter("no"));
+	String no = request.getParameter("no");
 	String password = request.getParameter("password");
 	
 	GuestBookVo vo = new GuestBookVo();
-	
-	vo.setNo(no);
+	vo.setNo(Long.parseLong(no));
 	vo.setPassword(password);
 	
+	new GuestBookDao().delete(vo);
 	
-	if (new GuestBookDao().delete(vo)) {
-		response.sendRedirect("/guestbook01");
-	} else {
-		response.sendRedirect("deleteform.jsp?no=" + no + "&check=false");
-	}
+	response.sendRedirect(request.getContextPath());
 
 %>
